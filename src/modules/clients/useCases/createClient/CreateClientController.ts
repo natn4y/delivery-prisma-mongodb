@@ -1,25 +1,26 @@
-import { Request, Response } from 'express'
+import { Request, Response } from 'express';
 import { CreateClientUseCase } from './CreateClientUseCase';
 
 class CreateClientController {
   async handle(request: Request, response: Response) {
 
   // Instancia a class
-  const createClientUseCase = new CreateClientUseCase();
+    const createClientUseCase = new CreateClientUseCase();
 
-  const { username, password } = request.body;
+    // Recupera informações do corpo da requisição
+    const { username, password } = request.body;
 
-  // Chama o método execute da classe instanciada passando as informações
-  const result = await createClientUseCase.execute({ username, password })
-    .then(() => {
-      console.log('Cliente criado com sucesso!');
-    })
-    .catch((error) => {
-      console.log('Erro ao criar cliente:', error);
-    });
+    try {
+      // Chama o método execute da classe instanciada passando as informações
+      await createClientUseCase.execute({ username, password });
 
-    return response.json(result);
+      console.log('Cliente cadastrado com sucesso!');
+      return response.status(200).json({ message: 'Cliente criado com sucesso!' });
+    } catch (error) {
+      console.log('Erro ao cadastrar cliente:', error);
+      return response.status(409).json({ error: 'Client already exists' });
+    }
   }
 }
 
-export { CreateClientController }
+export { CreateClientController };
