@@ -16,6 +16,23 @@ class CreateClientUseCase {
       console.log(error);
     }
 
+    // Validar se o client existe
+    const clientExist = await prisma.clients.findFirst({
+      where: {
+        username: {
+          mode: 'insensitive'
+        }
+      },
+    })
+
+    if (clientExist) {
+      throw new Error("Client already exists");
+    }
+
+    // Criptografar a senha
+
+    // Salvar o client
+
     // Lógica de criação do cliente aqui
   }
 }
@@ -30,8 +47,8 @@ const password = '123';
 // Chama o método execute da classe instanciada passando as informações
 createClientUseCase.execute({ username, password })
   .then(() => {
-
+    console.log('Cliente criado com sucesso!');
   })
   .catch((error) => {
-
+    console.log('Erro ao criar cliente:', error);
   });
