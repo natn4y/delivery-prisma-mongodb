@@ -1,5 +1,14 @@
+import { PrismaClient } from '@prisma/client';
+
 import { hash } from 'bcrypt'
-import { prisma } from '../../../../database/prismaClient';
+
+const prisma = new PrismaClient({
+  datasources: {
+    db: {
+      url: "mongodb://localhost:27018/delivery-node?directConnection=true",
+    },
+  },
+});
 
 interface ICreateClient {
   username: string;
@@ -20,10 +29,11 @@ class CreateClientUseCase {
     const clientExist = await prisma.clients.findFirst({
       where: {
         username: {
-          mode: 'insensitive'
-        }
+          equals: username,
+          mode: 'insensitive',
+        },
       },
-    })
+    });
 
     if (clientExist) {
       throw new Error("Client already exists");
@@ -46,18 +56,4 @@ class CreateClientUseCase {
   }
 }
 
-// Instancia a class
-const createClientUseCase = new CreateClientUseCase();
-
-// Informações do body da requisição
-const username = 'john.doe';
-const password = '123';
-
-// Chama o método execute da classe instanciada passando as informações
-createClientUseCase.execute({ username, password })
-  .then(() => {
-    console.log('Cliente criado com sucesso!');
-  })
-  .catch((error) => {
-    console.log('Erro ao criar cliente:', error);
-  });
+export { CreateClientUseCase }
