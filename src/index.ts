@@ -1,42 +1,33 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient({
-  datasources: {
-    db: {
-      url: "mongodb://localhost:27018/delivery-node?directConnection=true",
-    },
-  },
-});
+import { prisma } from './database/prismaClient';
 
 async function createUser() {
   try {
-    const user = await prisma.user.create({
+    await prisma.clients.create({
       data: {
-        name: "Admin",
-        email: "admin@admin.com",
-        created_at: new Date().toISOString(),
-        isAdmin: true
-      },
-    });
+        username: "john",
+        password: "123"
+      }
+    })
 
     const deliveryman = await prisma.deliveryman.create({
       data: {
         username: "deliveryman",
         password: "123456",
+        created_at: new Date().toISOString(),
+        isAdmin: false
       },
     })
 
-    const deliveries = await prisma.deliveries.create({
+    await prisma.deliveries.create({
       data: {
-        id_client: '???',
-        id_deliveryman: '???',
+        id_client: '',
+        id_deliveryman: null,
         item_name: 'Vatapá c/ pimenta',
         create_at: '2023-06-01T05:11:54.447Z',
-        end_at: '2023-06-01T05:11:54.447Z'
+        end_at: null
       }
     })
 
-    console.log("Usuário criado:", user);
     console.log("Deliveryman criado:", deliveryman);
 
   } catch (error) {
