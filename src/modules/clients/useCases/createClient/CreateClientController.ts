@@ -10,7 +10,6 @@ class CreateClientController {
   const { username, password } = request.body;
 
   // Chama o método execute da classe instanciada passando as informações
-  console.log("", username, password);
   const result = await createClientUseCase.execute({ username, password })
     .then(() => {
       console.log('Cliente criado com sucesso!');
