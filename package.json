@@ -2,10 +2,10 @@
   "name": "delivery-prisma-mongodb",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.ts",
+  "main": "src/server.ts",
   "scripts": {
-    "start": "nodemon src/index.ts",
-    "dev": "nodemon src/index.ts",
+    "start": "ts-node src/server.ts",
+    "dev": "nodemon src/server.ts",
     "prisma:generate": "prisma generate"
   },
   "keywords": [],
@@ -18,9 +18,11 @@
     "mongodb": "^4.16.0",
     "mongodb-migrate": "^2.0.2",
     "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.4"
   },
   "devDependencies": {
+    "@types/express": "^4.17.17",
     "nodemon": "^2.0.22",
     "prisma": "^4.15.0-dev.30"
   }
