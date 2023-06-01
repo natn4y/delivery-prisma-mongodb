@@ -12,10 +12,9 @@ COPY package.json ./
 RUN npm install
 
 # Define variáveis de ambiente
-ENV PORT=4467
 
-# Expõe a porta especificada
-EXPOSE 4467
+# Expõe a porta especificada para o servidor node
+EXPOSE 3001
 
 # Define o ponto de entrada do contêiner
 ENTRYPOINT ["npm", "start"]
