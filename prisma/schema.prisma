@@ -11,9 +11,42 @@ generator client {
 }
 
 model User {
-  id         String @id @default(uuid()) @map("_id")
-  email      String @unique
+  id         String  @id @default(uuid()) @map("_id")
+  email      String  @unique
   name       String
-  created_at String
+  created_at DateTime
   isAdmin    Boolean
+
+  @@map("user")
+}
+
+model Deliveryman {
+  id         String       @id @default(uuid()) @map("_id")
+  username   String       @unique
+  password   String
+  Deliveries Deliveries[]
+
+  @@map("deliveryman")
+}
+
+model Clients {
+  id         String       @id @default(uuid()) @map("_id")
+  username   String       @unique
+  password   String
+  Deliveries Deliveries[]
+
+  @@map("clients")
+}
+
+model Deliveries {
+  id             String      @id @default(uuid()) @map("_id")
+  id_client      String
+  client         Clients     @relation(fields: [id_client], references: [id])
+  id_deliveryman String
+  deliveryman    Deliveryman @relation(fields: [id_deliveryman], references: [id])
+  item_name      String
+  create_at      DateTime    @default(now())
+  end_at         DateTime    @default(now())
+
+  @@map("deliveries")
 }
