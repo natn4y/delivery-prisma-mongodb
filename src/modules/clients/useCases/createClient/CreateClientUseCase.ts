@@ -1,14 +1,5 @@
-import { PrismaClient } from '@prisma/client';
-
 import { hash } from 'bcrypt'
-
-const prisma = new PrismaClient({
-  datasources: {
-    db: {
-      url: "mongodb://localhost:27018/delivery-node?directConnection=true",
-    },
-  },
-});
+import { prisma } from '../../../../database/prismaClient';
 
 interface ICreateClient {
   username: string;
@@ -51,8 +42,6 @@ class CreateClientUseCase {
     })
 
     return client;
-
-    // Lógica de criação do cliente aqui
   }
 }
 
