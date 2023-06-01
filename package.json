@@ -14,6 +14,7 @@
   "dependencies": {
     "@prisma/client": "^4.15.0-dev.30",
     "@prisma/migrate": "^4.14.0",
+    "@types/vscode": "^1.78.1",
     "express": "^4.18.2",
     "mongodb": "^4.16.0",
     "mongodb-migrate": "^2.0.2",
