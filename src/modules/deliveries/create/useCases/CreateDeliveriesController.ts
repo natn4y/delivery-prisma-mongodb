@@ -3,8 +3,7 @@ import { CreateDeliveriesUseCase } from './CreateDeliveriesUseCase';
 
 class CreateDeliveriesController {
   async handle(request: Request, response: Response) {
-    const { item_name } = request.body;
-    const { id_client } = request;
+    const { item_name, id_client, end_at, id_deliveryman } = request.body;
 
     try {
       const createDeliveryUseCase = new CreateDeliveriesUseCase()
@@ -12,6 +11,8 @@ class CreateDeliveriesController {
       await createDeliveryUseCase.execute({
         id_client,
         item_name,
+        end_at,
+        id_deliveryman
       });
 
       return response.status(200).json({ message: 'delivery created' });
