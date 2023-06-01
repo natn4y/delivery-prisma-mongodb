@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    restart: always
+    ports:
+      - 27018:27017
+    volumes:
+      - mongodb_data:/data/db
+    command: --replSet rs1 --bind_ip_all
+
+
+  prisma:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4467:4467"
+    volumes:
+      - ./prisma:/app/prisma
+    environment:
+      PRISMA_CONFIG: /app/prisma/.env
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: password
+    command: sh -c "npm install && npx prisma generate && npm start"
+
+
+volumes:
+  mongodb_data:

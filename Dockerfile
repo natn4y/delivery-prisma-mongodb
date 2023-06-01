@@ -7,14 +7,20 @@ WORKDIR /app
 # Copia os arquivos de código-fonte para o diretório de trabalho
 COPY . .
 
+COPY package.json ./
+
+RUN npm install
+
 # Define variáveis de ambiente
-ENV PORT=3000
+ENV PORT=4467
+
+# Expõe a porta especificada
+EXPOSE 4467
 
 # Define o ponto de entrada do contêiner
 ENTRYPOINT ["npm", "start"]
 
-# Expõe a porta especificada
-EXPOSE $PORT
+CMD ["npm", "start"]
 
 # Define um rótulo para a imagem
 LABEL version="1.0"
