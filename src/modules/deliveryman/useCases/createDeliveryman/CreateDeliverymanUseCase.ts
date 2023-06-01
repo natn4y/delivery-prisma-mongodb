@@ -32,6 +32,8 @@ class CreateDeliverymanUseCase {
         data: {
           username,
           password: hashPassword,
+          isAdmin: false,
+          created_at: new Date().toISOString(),
         }
       })
 

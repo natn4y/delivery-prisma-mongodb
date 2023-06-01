@@ -5,7 +5,9 @@ async function createUser() {
     await prisma.clients.create({
       data: {
         username: "john",
-        password: "123"
+        password: "123",
+        created_at: new Date().toISOString(),
+        isAdmin: false
       }
     })
 
@@ -20,7 +22,7 @@ async function createUser() {
 
     await prisma.deliveries.create({
       data: {
-        id_client: '',
+        id_client: null,
         id_deliveryman: null,
         item_name: 'Vatapá c/ pimenta',
         create_at: '2023-06-01T05:11:54.447Z',

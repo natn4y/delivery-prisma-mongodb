@@ -38,6 +38,8 @@ class CreateClientUseCase {
       data: {
         username,
         password: hashPassword,
+        created_at: new Date().toISOString(),
+        isAdmin: false,
       }
     })
 

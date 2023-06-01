@@ -16,7 +16,8 @@ model Deliveryman {
   password   String
   Deliveries Deliveries[]
   created_at DateTime
-  isAdmin Boolean
+  isAdmin    Boolean
+
   @@map("deliveryman")
 }
 
@@ -25,18 +26,20 @@ model Clients {
   username   String       @unique
   password   String
   Deliveries Deliveries[]
+  created_at DateTime     @default(now())
+  isAdmin    Boolean
 
   @@map("clients")
 }
 
 model Deliveries {
-  id             String      @id @default(uuid()) @map("_id")
-  id_client      String
-  client         Clients     @relation(fields: [id_client], references: [id])
+  id             String       @id @default(uuid()) @map("_id")
+  id_client      String?
+  client         Clients?     @relation(fields: [id_client], references: [id])
   id_deliveryman String?
   deliveryman    Deliveryman? @relation(fields: [id_deliveryman], references: [id])
   item_name      String
-  create_at      DateTime    @default(now())
+  create_at      DateTime     @default(now())
   end_at         DateTime?
 
   @@map("deliveries")
