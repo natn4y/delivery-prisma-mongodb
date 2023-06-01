@@ -32,6 +32,16 @@ class CreateClientUseCase {
     // Criptografar a senha
     const hashPassword = await hash(password, 10);
 
+    // Salvar o client
+    const client = await prisma.clients.create({
+      data: {
+        username,
+        password: hashPassword,
+      }
+    })
+
+    return client;
+
     // Lógica de criação do cliente aqui
   }
 }
