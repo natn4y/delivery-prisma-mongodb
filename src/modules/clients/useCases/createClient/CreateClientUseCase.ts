@@ -16,7 +16,7 @@ class CreateClientUseCase {
       console.log(error);
     }
 
-    // Validar se o client existe
+    // Validar se o usuário existe
     const clientExist = await prisma.clients.findFirst({
       where: {
         username: {
@@ -30,8 +30,7 @@ class CreateClientUseCase {
     }
 
     // Criptografar a senha
-
-    // Salvar o client
+    const hashPassword = await hash(password, 10);
 
     // Lógica de criação do cliente aqui
   }
