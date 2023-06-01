@@ -17,7 +17,7 @@ class CreateDeliverymanController {
       console.log('deliveryman cadastrado com sucesso!');
       return response.status(200).json({ message: 'deliveryman criado com sucesso!' });
     } catch (error) {
-      console.log('Erro ao cadastrar deliveryman:', error);
+      console.log('Erro ao cadastrar deliveryman');
       return response.status(409).json({ error: 'deliveryman already exists' });
     }
   }

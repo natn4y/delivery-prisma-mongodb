@@ -17,7 +17,7 @@ class CreateClientController {
       console.log('Cliente cadastrado com sucesso!');
       return response.status(200).json({ message: 'Cliente criado com sucesso!' });
     } catch (error) {
-      console.log('Erro ao cadastrar cliente:', error);
+      console.log('Erro ao cadastrar cliente');
       return response.status(409).json({ error: 'Client already exists' });
     }
   }
