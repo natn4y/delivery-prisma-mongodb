@@ -14,22 +14,22 @@ model Deliveryman {
   id         String       @id @default(uuid()) @map("_id")
   username   String       @unique
   password   String
-  Deliveries Deliveries[]
   created_at DateTime
   isAdmin    Boolean
 
   @@map("deliveryman")
+  deliveries Deliveries[]
 }
 
 model Clients {
   id         String       @id @default(uuid()) @map("_id")
   username   String       @unique
   password   String
-  Deliveries Deliveries[]
   created_at DateTime     @default(now())
   isAdmin    Boolean
 
   @@map("clients")
+  deliveries Deliveries[]
 }
 
 model Deliveries {

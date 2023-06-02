@@ -26,11 +26,12 @@ class AuthenticateClientUseCase {
       throw new Error("username or password invalid!");
     }
 
-    //Gerar token
+    // Gerar token
     const token = sign({
       username
     }, "96a284ffc8e6fc5e87671f070bf88118", {
-      subject: "1d"
+      subject: client.id,
+      expiresIn: "1d"
     });
 
     return token;
