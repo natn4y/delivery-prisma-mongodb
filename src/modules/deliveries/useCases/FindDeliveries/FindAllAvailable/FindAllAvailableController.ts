@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { FindAllWithoutEndDateUseCase } from './findAllAvailableUseCase';
+import { FindAllWithoutEndDateUseCase } from './FindAllAvailableUseCase';
 
 
 

@@ -4,7 +4,7 @@ import { ensureAuthenticateClient } from './middlewares/ensureAuthenticateClient
 import { AuthenticateClientController } from './modules/accounts/authenticateClient/AuthenticateClientController';
 import { CreateClientController } from './modules/clients/useCases/CreateClient/CreateClientController';
 import { CreateDeliveriesController } from './modules/deliveries/useCases/CreateDeliveries/CreateDeliveriesController';
-import { FindAllAvailableController } from './modules/deliveries/useCases/FindDeliveries/findAllAvailable/findAllAvailableController';
+import { FindAllAvailableController } from './modules/deliveries/useCases/FindDeliveries/FindAllAvailable/FindAllAvailableController';
 import { CreateDeliverymanController } from './modules/deliveryman/useCases/CreateDeliveryman/CreateDeliverymanController';
 import { AuthenticateDeliverymanController } from './modules/accounts/authenticateDelivery/authenticateDeliverymanController';
 import { ensureAuthenticateDeliveryman } from './middlewares/ensureAuthenticateDeliveryman';
