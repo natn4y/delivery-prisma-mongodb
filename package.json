@@ -6,7 +6,8 @@
   "scripts": {
     "start": "sudo docker-compose up & ts-node src/server.ts",
     "dev": "nodemon src/server.ts",
-    "prisma:generate": "prisma generate"
+    "prisma:generate": "prisma generate",
+    "build": "sudo docker-compose build"
   },
   "keywords": [],
   "author": "",
