@@ -1,4 +1,4 @@
-import { prisma } from '../../../../database/prismaClient';
+import { prisma } from '../../../../../database/prismaClient';
 
 interface IUpdateEndDateUseCase {
   id_delivery: string;

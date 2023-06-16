@@ -17,8 +17,8 @@ app.get('/', (req: Request, res: Response) => {
 app.listen(3001, () => {
   const ipAddress = getContainerIPAddress();
 
-  if (ipAddress) {
-    console.log(`\n\n\nServer is running at http://${ipAddress}:3001\n\n\n`);
+  if (ipAddress?.startsWith("192")) {
+    console.log(`\n__ ALERT ~/ \n\nServer is running at \n http://${ipAddress}:3001/ <----  \n`);
   } else {
     console.error('Unable to find the IP address of the container.');
   }

@@ -1,5 +1,5 @@
 {
-  "name": "delivery-prisma-mongodb",
+  "name": "agendar-prisma-mongodb",
   "version": "1.0.0",
   "description": "",
   "main": "src/server.ts",

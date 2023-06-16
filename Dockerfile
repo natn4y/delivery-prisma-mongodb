@@ -23,4 +23,4 @@ CMD ["npm", "start"]
 
 # Define um rótulo para a imagem
 LABEL version="1.0"
-LABEL description="Sistema Delivery"
+LABEL description="Sistema de Agendamento - Salão na mão"
