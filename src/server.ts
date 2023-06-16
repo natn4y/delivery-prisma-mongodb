@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import morgan from 'morgan'
 import os from 'os';
 
 import { routes } from './routes';
@@ -7,6 +8,7 @@ const app = express();
 
 app.use(express.json())
 app.use(routes)
+app.use(morgan('dev'))
 
 app.get('/', (req: Request, res: Response) => {
   return res.json({
@@ -14,11 +16,11 @@ app.get('/', (req: Request, res: Response) => {
   });
 });
 
-app.listen(3001, () => {
+app.listen(8000, () => {
   const ipAddress = getContainerIPAddress();
 
   if (ipAddress?.startsWith("192")) {
-    console.log(`\n__ ALERT ~/ \n\nServer is running at \n http://${ipAddress}:3001/ <----  \n`);
+    console.log(`\n__ ALERT ~/ \n\nServer is running at \n http://${ipAddress}:8000/ <----  \n`);
   } else {
     console.error('Unable to find the IP address of the container.');
   }

@@ -14,7 +14,7 @@ RUN npm install
 # Define variáveis de ambiente
 
 # Expõe a porta especificada para o servidor node
-EXPOSE 3001
+EXPOSE 8000
 
 # Define o ponto de entrada do contêiner
 ENTRYPOINT ["npm", "start"]
