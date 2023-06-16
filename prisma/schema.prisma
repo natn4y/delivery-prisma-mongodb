@@ -10,17 +10,6 @@ generator client {
   binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
-model Deliveryman {
-  id         String       @id @default(uuid()) @map("_id")
-  username   String       @unique
-  password   String
-  created_at DateTime
-  isAdmin    Boolean
-
-  @@map("deliveryman")
-  deliveries Deliveries[]
-}
-
 model Clients {
   id         String       @id @default(uuid()) @map("_id")
   username   String       @unique
@@ -29,18 +18,4 @@ model Clients {
   isAdmin    Boolean
 
   @@map("clients")
-  deliveries Deliveries[]
-}
-
-model Deliveries {
-  id             String       @id @default(uuid()) @map("_id")
-  id_client      String?
-  client         Clients?     @relation(fields: [id_client], references: [id])
-  id_deliveryman String?
-  deliveryman    Deliveryman? @relation(fields: [id_deliveryman], references: [id])
-  item_name      String
-  create_at      DateTime     @default(now())
-  end_at         DateTime?
-
-  @@map("deliveries")
 }
